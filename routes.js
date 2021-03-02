@@ -14,8 +14,8 @@ module.exports = [
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
   { method: 'GET', path: '/ContactUs', config: Accounts.showContact },
   { method: 'POST', path: '/ContactUs', config: Accounts.ContactUs },
-  { method: 'GET', path: '/Ailwee', config: Accounts.showContact },
-  { method: 'POST', path: '/Ailwee', config: Accounts.ContactUs },
+  { method: 'GET', path: '/Ailwee', config: Accounts.showAilwee },
+  { method: 'POST', path: '/Ailwee', config: Accounts.Ailwee },
 
   { method: "GET", path: "/home", config: Donations.home },
   { method: "POST", path: "/donate", config: Donations.donate },
