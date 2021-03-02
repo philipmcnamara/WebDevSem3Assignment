@@ -176,6 +176,29 @@ const Accounts = {
       }
     }
   },
+  showAilwee: {
+    handler: function(request, h) {
+      return h.view('Ailwee', { title: 'Login to Donations' });
+    }
+  },
+  Ailwee: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        user.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/Ailwee");
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    }
+  },
   validate: {
     payload: {
       firstName: Joi.string().required(),
