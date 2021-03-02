@@ -7,6 +7,9 @@ const Handlebars = require("handlebars");
 const Cookie = require("@hapi/cookie");
 require('./app/models/db');
 const env = require('dotenv');
+const Joi = require("@hapi/joi");
+
+server.validator(require("@hapi/joi"));
 
 env.config();
 
@@ -14,6 +17,8 @@ const server = Hapi.server({
   port: 3000,
   host: "localhost",
 });
+
+
 
 async function init() {
   await server.register(Inert);
@@ -48,5 +53,7 @@ process.on("unhandledRejection", (err) => {
   console.log(err);
   process.exit(1);
 });
+
+
 
 init();
