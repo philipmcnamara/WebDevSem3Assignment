@@ -18,6 +18,8 @@ module.exports = [
   { method: 'POST', path: '/Ailwee', config: Accounts.Ailwee },
   { method: 'GET', path: '/bunratty', config: Accounts.showBunratty },
   { method: 'POST', path: '/bunratty', config: Accounts.Bunratty },
+  { method: 'GET', path: '/folkFest', config: Accounts.showDoolin },
+  { method: 'POST', path: '/folkFest', config: Accounts.Doolin },
 
   { method: "GET", path: "/home", config: Donations.home },
   { method: "POST", path: "/donate", config: Donations.donate },
