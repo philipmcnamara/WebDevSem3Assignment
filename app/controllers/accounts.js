@@ -201,7 +201,7 @@ const Accounts = {
   },
   showBunratty: {
     handler: function(request, h) {
-      return h.view('Ailwee', { title: 'Visit Clare' });
+      return h.view('bunratty', { title: 'Visit Clare' });
     }
   },
   Bunratty: {
