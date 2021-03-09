@@ -1,7 +1,7 @@
 "use strict";
 
 const Accounts = require("./app/controllers/accounts");
-const Donations = require("./app/controllers/donations");
+
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -27,10 +27,8 @@ module.exports = [
   { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
 
-
-  { method: "GET", path: "/home", config: Donations.home },
-  { method: "POST", path: "/donate", config: Donations.donate },
-  { method: "GET", path: "/report", config: Donations.report },
+  { method: "GET", path: "/home", config: Accounts.home },
+  { method: "GET", path: "/report", config: Accounts.report },
 
   {
     method: "GET",

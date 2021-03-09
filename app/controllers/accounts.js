@@ -11,6 +11,19 @@ const Accounts = {
       return h.view("main", { title: "Welcome to Clare" });
     }
   },
+  home: {
+    handler: function (request, h) {
+      return h.view("home", { title: "Home" });
+    },
+  },
+  report: {
+    handler: async function (request, h) {
+      const donations = await User.find().populate("report").lean();
+      return h.view("report", {
+        title: "Find Us",
+      });
+    },
+  },
   showSignup: {
     auth: false,
     handler: function(request, h) {
