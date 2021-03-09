@@ -16,10 +16,10 @@ const Accounts = {
       return h.view("home", { title: "Home" });
     },
   },
-  report: {
+  findUs: {
     handler: async function (request, h) {
-      const donations = await User.find().populate("report").lean();
-      return h.view("report", {
+      const report = await User.find().populate("findUs").lean();
+      return h.view("findUs", {
         title: "Find Us",
       });
     },

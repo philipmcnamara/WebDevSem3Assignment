@@ -2,7 +2,6 @@
 
 const Accounts = require("./app/controllers/accounts");
 
-
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
   { method: "GET", path: "/signup", config: Accounts.showSignup },
@@ -28,7 +27,7 @@ module.exports = [
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
 
   { method: "GET", path: "/home", config: Accounts.home },
-  { method: "GET", path: "/report", config: Accounts.report },
+  { method: "GET", path: "/findUs", config: Accounts.findUs },
 
   {
     method: "GET",
