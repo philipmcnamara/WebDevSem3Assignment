@@ -1,5 +1,6 @@
 "use strict";
 const User = require("../models/user");
+const Admin = require("../models/admin");
 const Boom = require("@hapi/boom");
 const Joi = require("@hapi/joi");
 
@@ -262,6 +263,101 @@ const Accounts = {
         .code(400);
     },
   },
+
+  showAdminSignup: {
+    auth: false,
+    handler: function(request, h) {
+      return h.view("adminSignup", { title: "Sign up" });
+    }
+  },
+
+  adminSignup: {
+    auth: false,
+    validate: {
+      payload: {
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("adminSignup", {
+            title: "Sign up error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+    handler: async function (request, h) {
+      try {
+        const payload = request.payload;
+        let admin = await Admin.findByEmail(payload.email);
+        if (admin) {
+          const message = "Email address is already registered";
+          throw Boom.badData(message);
+        }
+        const newAdmin = new Admin({
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          email: payload.email,
+          password: payload.password,
+        });
+        admin = await newAdmin.save();
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/adminHome");
+      } catch (err) {
+        return h.view("adminSignup", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
+  showAdminLogin: {
+    auth: false,
+    handler: function(request, h) {
+      return h.view("adminLogin", { title: "Login" });
+    }
+  },
+
+  adminLogin: {
+    auth: false,
+    validate: {
+      payload: {
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("adminLogin", {
+            title: "Sign in error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const { email, password } = request.payload;
+      try {
+        let admin = await Admin.findByEmail(email);
+        if (!admin) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        admin.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/adminHome");
+      } catch (err) {
+        return h.view("adminLogin", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
 };
+
 
 module.exports = Accounts;
