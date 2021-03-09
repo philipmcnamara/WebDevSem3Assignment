@@ -21,6 +21,12 @@ module.exports = [
   { method: 'GET', path: '/folkFest', config: Accounts.showDoolin },
   { method: 'POST', path: '/folkFest', config: Accounts.Doolin },
 
+  { method: "GET", path: "/adminSignup", config: Accounts.showAdminSignup },
+  { method: "GET", path: "/adminLogin", config: Accounts.showAdminLogin },
+  { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
+  { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
+
+
   { method: "GET", path: "/home", config: Donations.home },
   { method: "POST", path: "/donate", config: Donations.donate },
   { method: "GET", path: "/report", config: Donations.report },
