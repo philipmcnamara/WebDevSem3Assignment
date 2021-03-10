@@ -29,6 +29,9 @@ module.exports = [
   { method: "GET", path: "/home", config: Accounts.home },
   { method: "GET", path: "/findUs", config: Accounts.findUs },
 
+  { method: "GET", path: "/map", config: Accounts.showMap },
+  { method: "POST", path: "/map", config: Accounts.map },
+
   {
     method: "GET",
     path: "/{param*}",

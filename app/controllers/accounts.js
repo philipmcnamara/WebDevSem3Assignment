@@ -369,7 +369,39 @@ const Accounts = {
       }
     }
   },
-};
+  showMap: {
+    handler: function(request, h) {
+      return h.view('map', { title: 'View Map' });
+    }
+  },
+  map: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+          // The location of the cliffs
+          const cliffs = { lat: 52.9715, lng: 9.4309 };
+          // The map, centered at cliffs
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: cliffs,
+          });
+          // The marker, positioned at cliffs
+          const marker = new google.maps.Marker({
+            position: cliffs,
+            map: map,
+          });
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    }
+  },
 
+};
 
 module.exports = Accounts;
