@@ -1,6 +1,7 @@
 "use strict";
 
 const Accounts = require("./app/controllers/accounts");
+const Donations = require("./app/controllers/donations");
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -20,17 +21,27 @@ module.exports = [
   { method: 'GET', path: '/folkFest', config: Accounts.showDoolin },
   { method: 'POST', path: '/folkFest', config: Accounts.Doolin },
 
-
   { method: "GET", path: "/adminSignup", config: Accounts.showAdminSignup },
   { method: "GET", path: "/adminLogin", config: Accounts.showAdminLogin },
   { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
 
-  { method: "GET", path: "/home", config: Accounts.home },
-  { method: "GET", path: "/findUs", config: Accounts.findUs },
-
   { method: "GET", path: "/map", config: Accounts.showMap },
   { method: "POST", path: "/map", config: Accounts.map },
+
+  { method: "GET", path: "/home", config: Accounts.home },
+
+  { method: "POST", path: "/donate", config: Donations.donate },
+  { method: "GET", path: "/report", config: Donations.report },
+
+  { method: "GET", path: "/addPoi", config: Accounts.showPOI },
+  { method: 'POST', path: '/addPoi', config: Accounts.POI },
+
+  // { method: "GET", path: "/displayPOI", config: Donations.showPOI },
+  { method: 'POST', path:"/displayPOI", config: Donations.POI },
+  { method: 'POST', path:"/displayUpdatedPOI", config: Donations.UpdatePOI },
+
+
 
   {
     method: "GET",

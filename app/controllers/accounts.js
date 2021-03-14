@@ -16,14 +16,6 @@ const Accounts = {
       return h.view("home", { title: "Home" });
     },
   },
-  findUs: {
-    handler: async function (request, h) {
-      const report = await User.find().populate("findUs").lean();
-      return h.view("findUs", {
-        title: "Find Us",
-      });
-    },
-  },
   showSignup: {
     auth: false,
     handler: function(request, h) {
@@ -123,6 +115,8 @@ const Accounts = {
     handler: async function(request, h) {
       try {
         const id = request.auth.credentials.id;
+        console.log("test");
+        console.log(id);
         const user = await User.findById(id).lean();
         return h.view("settings", { title: "Settings", user: user });
       } catch (err) {
@@ -369,6 +363,29 @@ const Accounts = {
       }
     }
   },
+  showReport: {
+    handler: function(request, h) {
+      return h.view('report', { title: 'View Report' });
+    }
+  },
+  report: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        user.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/report");
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    }
+  },
   showMap: {
     handler: function(request, h) {
       return h.view('map', { title: 'View Map' });
@@ -384,18 +401,66 @@ const Accounts = {
           const message = "Email address is not registered";
           throw Boom.unauthorized(message);
         }
-          // The location of the cliffs
-          const cliffs = { lat: 52.9715, lng: 9.4309 };
-          // The map, centered at cliffs
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 4,
-            center: cliffs,
-          });
-          // The marker, positioned at cliffs
-          const marker = new google.maps.Marker({
-            position: cliffs,
-            map: map,
-          });
+        // The location of the cliffs
+        const cliffs = { lat: 52.9715, lng: 9.4309 };
+        // The map, centered at cliffs
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: cliffs,
+        });
+        // The marker, positioned at cliffs
+        const marker = new google.maps.Marker({
+          position: cliffs,
+          map: map,
+        });
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    }
+  },
+
+  showPOI: {
+    handler: function(request, h) {
+      return h.view('addPoi', { title: 'Add POI' });
+    }
+  },
+  POI: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        user.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/addPoi");
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    }
+  },
+
+  showDisplayPOI: {
+    handler: function(request, h) {
+      return h.view('displayPOI', { title: 'Visit Clare' });
+    }
+  },
+  displayPOI: {
+    auth: false,
+    handler: async function(request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+        user.comparePassword(password);
+        request.cookieAuth.set({ id: user.id });
+        return h.redirect("/displayPOI");
       } catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }

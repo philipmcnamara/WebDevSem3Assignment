@@ -1,0 +1,30 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <caption>
+            Donations to Date
+        </caption>
+        <thead>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>View</th>
+        </thead>
+
+        <tbody class="uk-text-left">
+        {{#each donations}}
+            <tr>
+                <form action="/displayPOI" method="POST">
+                    <td>{{amount}}</td>
+                    <td>{{method}}</td>
+                    <td>{{description}}</td>
+                    <td> {{donor.firstName}} {{donor.lastName}} </td>
+                    <input type="hidden" value={{_id}} name="id" />
+                    <td><button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">View</button></td>
+                </form>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
