@@ -1,7 +1,7 @@
 "use strict";
 
 const Accounts = require("./app/controllers/accounts");
-const Donations = require("./app/controllers/donations");
+const Pois = require("./app/controllers/POIs");
 
 module.exports = [
   { method: "GET", path: "/", config: Accounts.index },
@@ -31,15 +31,14 @@ module.exports = [
 
   { method: "GET", path: "/home", config: Accounts.home },
 
-  { method: "POST", path: "/donate", config: Donations.donate },
-  { method: "GET", path: "/report", config: Donations.report },
+  { method: "POST", path: "/POI", config: Pois.poi },
+  { method: "GET", path: "/report", config: Pois.report },
 
   { method: "GET", path: "/addPoi", config: Accounts.showPOI },
   { method: 'POST', path: '/addPoi', config: Accounts.POI },
 
-  // { method: "GET", path: "/displayPOI", config: Donations.showPOI },
-  { method: 'POST', path:"/displayPOI", config: Donations.POI },
-  { method: 'POST', path:"/displayUpdatedPOI", config: Donations.UpdatePOI },
+  { method: 'POST', path:"/displayPOI", config: Pois.POI },
+  { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
 
 
 

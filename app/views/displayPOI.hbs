@@ -1,5 +1,5 @@
 <div class="uk-flex uk-flex-center uk-flex-middle uk-grid-small" uk-grid>
-    {{> title-card title="Find us...On the Wild Athlantic Way" subTitle="Your details..."}}
+    {{> title-card title="Find us...On the Wild Athlantic Way" subTitle="POI Details"}}
 </div>
 </div>
 <nav class="uk-navbar-container" uk-navbar="dropbar: true; dropbar-mode: push">...</nav>
@@ -10,11 +10,14 @@
 <div class="uk-container uk-margin">
     <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
         <div class="uk-width-auto@m">
+            {{>descriptionDisplay}}
+        </div>
+        <div class="uk-width-auto@m">
             <img width="300" src="images/settings.png">
         </div>
         <div class="uk-width-expand@m">
             <div class="uk-card uk-card-default uk-width-xlarge uk-card-body uk-box-shadow-large">
-                <h3 class="uk-card-title uk-text-center">POI Info: </h3>
+                <h3 class="uk-card-title uk-text-center">Update Poi: </h3>
                 {{>POIdisplay}}
             </div>
         </div>

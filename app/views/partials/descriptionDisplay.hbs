@@ -1,0 +1,22 @@
+<form uk-textarea>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>POI Name: {{name}}</p>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>POI Category : {{category}}</p>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>POI Description : {{description}}</p>
+        </div>
+        <input type="hidden" value="{{id}}" name="id"/>
+    </div>
+</form>
+{{> error }}
+
+
+

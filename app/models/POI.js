@@ -3,14 +3,14 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
-const donationSchema = new Schema({
-  amount: String,
-  method: String,
+const poiSchema = new Schema({
+  name: String,
+  category: String,
   description: String,
-  donor: {
+  author: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
 });
 
-module.exports = Mongoose.model("Donation", donationSchema);
+module.exports = Mongoose.model("POI", poiSchema);

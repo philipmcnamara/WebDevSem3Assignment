@@ -2,22 +2,25 @@
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input uk-form-large" type="text" name="amount" value="{{amount}}">
+            <input class="uk-input uk-form-large" type="text" name="name" value="{{name}}">
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: user"></span>
-            <input class="uk-input uk-form-large" type="text" name="method" value="{{method}}">
+            <input class="uk-input uk-form-large" type="text" name="category" value="{{category}}">
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: mail"></span>
-            <input class="uk-input uk-form-large" type="text" name="description" value="{{description}}">
+            <input class="uk-input uk-textarea" type="text" name="description" value="{{description}}">
         </div>
         <input type="hidden" value="{{id}}" name="id"/>
     </div>
-    <button type=submit" >Update</button>
+    <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update POI</button>
 </form>
 {{> error }}
+
+
+

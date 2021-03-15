@@ -1,7 +1,7 @@
 <div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <table class="uk-table">
         <caption>
-            Donations to Date
+            Poi's Added
         </caption>
         <thead>
         <th>Name</th>
@@ -12,13 +12,13 @@
         </thead>
 
         <tbody class="uk-text-left">
-        {{#each donations}}
+        {{#each pois}}
             <tr>
                 <form action="/displayPOI" method="POST">
-                    <td>{{amount}}</td>
-                    <td>{{method}}</td>
+                    <td>{{name}}</td>
+                    <td>{{category}}</td>
                     <td>{{description}}</td>
-                    <td> {{donor.firstName}} {{donor.lastName}} </td>
+                    <td> {{author.firstName}} {{author.lastName}} </td>
                     <input type="hidden" value={{_id}} name="id" />
                     <td><button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">View</button></td>
                 </form>

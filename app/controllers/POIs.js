@@ -1,38 +1,38 @@
 "use strict";
-const Donation = require("../models/donation");
+const POI = require("../models/POI");
 const User = require("../models/user");
 const Joi = require("@hapi/joi");
 const Boom = require("@hapi/boom");
 
 
-const Donations = {
+const Pois = {
   home: {
     handler: function(request, h) {
-      return h.view("home", { title: "Make a Donation" });
+      return h.view("home", { title: "Add a POI" });
     }
   },
   report: {
     handler: async function(request, h) {
-      const donations = await Donation.find().populate("donor").lean();
+      const pois = await POI.find().populate("poi").lean();
       return h.view("report", {
-        title: "Donations to Date",
-        donations: donations
+        title: "POI's",
+        pois: pois
       });
     }
   },
-  donate: {
+  poi: {
     handler: async function(request, h) {
       try {
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
         const data = request.payload;
-        const newDonation = new Donation({
-          amount: data.amount,
-          method: data.method,
+        const newPoi = new POI({
+          name: data.name,
+          category: data.category,
           description: data.description,
-          donor: user._id
+          author: user._id
         });
-        await newDonation.save();
+        await newPoi.save();
         return h.redirect("/report");
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -105,24 +105,14 @@ const Donations = {
     },
     handler: async function (request, h) {
       try {
-        //const id = request.params._id
-        //const userEdit = request.payload;
         const collection = request.payload;
         const id = collection.id
-        // request.cookieAuth.set({ _id: collection.id });
         console.log("test POI "+id);
-        // console.log("test 2");
-        const donation = await Donation.findById(id);
-        const method = donation.method;
-        const amount = donation.amount;
-        const description = donation.description;
-
-
-
-        //  camount = "test amount";//collection.amount;
-        //  donation.method = "test method";//collection.method;
-        //  donation.description = "test description";//collection.description;
-        return h.view("displayPOI", { title: "Testing", id: id, method: method, amount: amount, description: description });
+        const poi = await POI.findById(id);
+        const name = poi.name;
+        const category = poi.category;
+        const description = poi.description;
+        return h.view("displayPOI", { title: "Testing", id: id, name: name, category: category, description: description });
         // return h.redirect("/displayPOI",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -132,8 +122,8 @@ const Donations = {
   UpdatePOI: {
     validate: {
       payload: {
-        amount: Joi.string().required(),
-        method: Joi.string().required(),
+        name: Joi.string().required(),
+        category: Joi.string().required(),
         description: Joi.string().required(),
         id: Joi.string().required(),
       },
@@ -156,17 +146,17 @@ const Donations = {
         //const userEdit = request.payload;
         const collection = request.payload;
         const id = collection.id
-        const method = collection.method;
-        const amount = collection.amount;
+        const name = collection.name;
+        const category = collection.category;
         const description = collection.description;
 
         // request.cookieAuth.set({ _id: collection.id });
         console.log("test POI update "+id);
         // console.log("test 2");
-        const record = await Donation.findById(id);
-        console.log("Method: "+collection.method);
-        record.method = method;
-        record.amount = amount;
+        const record = await POI.findById(id);
+        console.log("Name: "+collection.name);
+        record.name = name;
+        record.category = category;
         record.description = description;
         await record.save();
 
@@ -175,7 +165,7 @@ const Donations = {
         //  camount = "test amount";//collection.amount;
         //  donation.method = "test method";//collection.method;
         //  donation.description = "test description";//collection.description;
-        return h.view("displayPOI", { title: "Testing", id: id, method: method, amount: amount, description: description });
+        return h.view("displayPOI", { title: "Testing", id: id, name: name, category: category, description: description });
         // return h.redirect("/displayPOI",{id:id});
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
@@ -186,4 +176,4 @@ const Donations = {
 
 };
 
-module.exports = Donations;
+module.exports = Pois;
