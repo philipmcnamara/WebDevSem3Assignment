@@ -23,4 +23,8 @@ userSchema.methods.comparePassword = function(candidatePassword) {
   return this;
 };
 
+userSchema.statics.findByPassword = function(password) {
+  return this.findOne({ password : password});
+};
+
 module.exports = Mongoose.model("User", userSchema);

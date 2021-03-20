@@ -461,11 +461,57 @@ const Accounts = {
         user.comparePassword(password);
         request.cookieAuth.set({ id: user.id });
         return h.redirect("/displayPOI");
-      } catch (err) {
+      }
+      catch (err) {
         return h.view("home", { errors: [{ message: err.message }] });
       }
     }
   },
+
+  authenticate: {
+    auth: false,
+    validate: {
+      payload: {
+        email: Joi.string().email().required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function(request, h, error) {
+        return h
+          .view("login", {
+            title: "Sign in error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const { email, password } = request.payload;
+      try {
+        let user = await User.findByEmail(email);
+        let userPassword = await User.findByPassword(password);
+        let admin = await Admin.findByEmail(email);
+        let adminPassword = await Admin.findByPassword(password);
+
+        if (user && userPassword) {
+          user.comparePassword(password);
+          request.cookieAuth.set({ id: user.id });
+          return h.redirect("/home")
+      }
+        else if (admin && adminPassword) {
+          admin.comparePassword(password);
+          request.cookieAuth.set({ id: admin.id });
+          return h.redirect("/home");
+        }
+      } catch (err) {
+        return h.view("login", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
 
 };
 

@@ -1,26 +1,52 @@
 <form action="/displayUpdatedPOI" method="POST">
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <input class="uk-input uk-form-large" type="text" name="name" value="{{name}}">
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <input class="uk-input uk-form-large" type="text" name="category" value="{{category}}">
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <input class="uk-input uk-textarea" type="text" name="description" value="{{description}}">
         </div>
         <input type="hidden" value="{{id}}" name="id"/>
     </div>
-    <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update POI</button>
+    <div class="uk-margin">
+    <div class="uk-inline uk-width-1-1">
+        <span class="uk-form-icon" uk-icon="icon: update"></span><button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Update POI</button> <br></div></div>
 </form>
 {{> error }}
 
+    <form action="/displayDeletedPOI" method="POST">
+        <div class="uk-margin">
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon" uk-icon="icon: delete"></span>
+                <button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">Remove POI</button></div></div>
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon" uk-icon="icon: foo"></span>
+                <input class="uk-input uk-form-large uk-hidden" type="text" name="name" value="{{name}}">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon" uk-icon="icon: foo"></span>
+                <input class="uk-input uk-form-large uk-hidden" type="text" name="category" value="{{category}}">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline uk-width-1-1">
+                <span class="uk-form-icon" uk-icon="icon: foo"></span>
+                <input class="uk-input uk-textarea uk-hidden" type="text" name="description" value="{{description}}">
+            </div>
+            <input type="hidden" value="{{id}}" name="id"/>
+        </div>
 
-
+    </form>
+{{> error }}

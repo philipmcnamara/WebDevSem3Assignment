@@ -3,10 +3,11 @@
 const Mongoose = require("mongoose");
 const Schema = Mongoose.Schema;
 
-const candidateSchema = Schema({
-  firstName: String,
+const categorySchema = Schema({
+  category: String,
   lastName: String,
   office: String,
+
 });
 
-module.exports = Mongoose.model("Candidate", candidateSchema);
+module.exports = Mongoose.model("Category", categorySchema);

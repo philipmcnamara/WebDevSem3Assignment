@@ -24,4 +24,8 @@ adminSchema.methods.comparePassword = function(candidatePassword) {
   return this;
 };
 
+adminSchema.statics.findByPassword = function(password) {
+  return this.findOne({ password : password});
+};
+
 module.exports = Mongoose.model("Admin", adminSchema);
