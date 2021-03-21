@@ -555,7 +555,6 @@ const Accounts = {
           const message = "Email address is not registered";
           throw Boom.unauthorized(message);
         }
-
         request.cookieAuth.set({ id: user.id });
         await user.delete();
         return h.redirect("/adminSettings");
@@ -564,53 +563,6 @@ const Accounts = {
       }
     },
   },
-
-  /*deleteUser: {
-    validate: {
-      payload: {
-        id: Joi.string().required(),
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        email: Joi.string().required(),
-        password: Joi.string().required(),
-      },
-
-      options: {
-        abortEarly: false,
-      },
-      failAction: function (request, h, error) {
-        return h
-          .view("home", {
-            title: "Sign up error",
-            errors: error.details,
-          })
-          .takeover()
-          .code(400);
-      },
-    },
-    handler: async function (request, h) {
-      try {
-        const collection = request.payload;
-        const id = collection.id
-        const firstName = collection.firstName;
-        const lastName = collection.lastName;
-        const email = collection.email;
-        const password = collection.password;
-        console.log("test 2");
-        const record = await User.findById(id);
-        console.log("User ID: "+id);
-        record.firstName = firstName;
-        record.lastName = lastName;
-        record.email = email;
-        record.password = password;
-        await record.delete();
-        return h.view("home", { title: "Testing", id: id, firstName: firstName, lastName: lastName, email: email, password: password });
-      } catch (err) {
-        return h.view("main", { errors: [{ message: err.message }] });
-      }
-    },
-  },*/
-
 
 };
 
