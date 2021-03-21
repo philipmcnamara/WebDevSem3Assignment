@@ -504,13 +504,112 @@ const Accounts = {
         else if (admin && adminPassword) {
           admin.comparePassword(password);
           request.cookieAuth.set({ id: admin.id });
-          return h.redirect("/home");
+          return h.redirect("/adminSettings");
         }
       } catch (err) {
         return h.view("login", { errors: [{ message: err.message }] });
       }
     },
   },
+
+  showAdminSettings: {
+    handler: function(request, h) {
+      return h.view('adminSettings', { title: 'View adminSettings' });
+    }
+  },
+  adminSettings: {
+    handler: async function(request, h) {
+      const users = await User.find().populate("users").lean();
+      return h.view("adminSettings", {
+        title: "User's",
+        users: users
+      });
+    }
+  },
+
+
+  deleteUser: {
+    auth: false,
+    validate: {
+      payload: {
+        id: Joi.string().id().required(),
+      },
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("adminSettings", {
+            title: "Sign in error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+    handler: async function (request, h) {
+      const { id} = request.payload;
+      try {
+        let user = await User.findByIdAndDelete(id);
+        if (!user) {
+          const message = "Email address is not registered";
+          throw Boom.unauthorized(message);
+        }
+
+        request.cookieAuth.set({ id: user.id });
+        await user.delete();
+        return h.redirect("/adminSettings");
+      } catch (err) {
+        return h.view("home", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
+  /*deleteUser: {
+    validate: {
+      payload: {
+        id: Joi.string().required(),
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().required(),
+        password: Joi.string().required(),
+      },
+
+      options: {
+        abortEarly: false,
+      },
+      failAction: function (request, h, error) {
+        return h
+          .view("home", {
+            title: "Sign up error",
+            errors: error.details,
+          })
+          .takeover()
+          .code(400);
+      },
+    },
+    handler: async function (request, h) {
+      try {
+        const collection = request.payload;
+        const id = collection.id
+        const firstName = collection.firstName;
+        const lastName = collection.lastName;
+        const email = collection.email;
+        const password = collection.password;
+        console.log("test 2");
+        const record = await User.findById(id);
+        console.log("User ID: "+id);
+        record.firstName = firstName;
+        record.lastName = lastName;
+        record.email = email;
+        record.password = password;
+        await record.delete();
+        return h.view("home", { title: "Testing", id: id, firstName: firstName, lastName: lastName, email: email, password: password });
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },*/
 
 
 };

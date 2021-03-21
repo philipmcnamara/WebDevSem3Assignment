@@ -4,7 +4,6 @@ const User = require("../models/user");
 const Joi = require("@hapi/joi");
 const Boom = require("@hapi/boom");
 
-
 const Pois = {
   home: {
     handler: function(request, h) {
@@ -132,8 +131,6 @@ const Pois = {
     },
   },
 
-
-
   deletePOI: {
     validate: {
       payload: {
@@ -177,6 +174,19 @@ const Pois = {
     },
   },
 
+  weatherNav: {
+  handler: async function(request, h) {
+    try {
+      return h.view("weatherNav", { title: "Testing",});
+    }
+    catch (err) {
+      return h.view("weatherNav", { errors: [{ message: err.message }] });
+    }
+  }
+},
+
 };
+
+
 
 module.exports = Pois;
