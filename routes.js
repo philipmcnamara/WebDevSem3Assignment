@@ -2,6 +2,7 @@
 
 const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/POIs.js");
+const weather = require("./app/controllers/weather.js");
 
 
 module.exports = [
@@ -21,28 +22,26 @@ module.exports = [
   { method: 'POST', path: '/bunratty', config: Accounts.Bunratty },
   { method: 'GET', path: '/folkFest', config: Accounts.showDoolin },
   { method: 'POST', path: '/folkFest', config: Accounts.Doolin },
-
   { method: "GET", path: "/adminSignup", config: Accounts.showAdminSignup },
   { method: "GET", path: "/adminLogin", config: Accounts.showAdminLogin },
   { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
-
   { method: "GET", path: "/map", config: Accounts.showMap },
   { method: "POST", path: "/map", config: Accounts.map },
-
   { method: "GET", path: "/home", config: Accounts.home },
-
   { method: "POST", path: "/POI", config: Pois.poi },
   { method: "GET", path: "/report", config: Pois.report },
-
   { method: "GET", path: "/addPoi", config: Accounts.showPOI },
   { method: 'POST', path: '/addPoi', config: Accounts.POI },
-
   { method: 'POST', path:"/displayPOI", config: Pois.POI },
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
-
   { method: "POST", path: "/authenticate", config: Accounts.authenticate },
+
+  { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
+
+  { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
+  { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
 
   {
     method: "GET",

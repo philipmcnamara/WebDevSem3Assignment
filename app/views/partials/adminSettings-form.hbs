@@ -1,0 +1,27 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <caption>
+            Users
+        </caption>
+        <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        </thead>
+
+        <tbody class="uk-text-left">
+        {{#each users}}
+            <tr>
+                <form action="/adminSettings" method="POST">
+                    <td>{{firstName}}</td>
+                    <td>{{lastName}}</td>
+                    <td>{{email}}</td>
+                    <input type="hidden" value={{_id}} name="id" />
+                    <td><button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">Delete</button></td>
+                </form>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+

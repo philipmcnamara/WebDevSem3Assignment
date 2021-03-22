@@ -1,7 +1,6 @@
 {
   "name": "philipmcnamara_assignment",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -16,6 +15,7 @@
     "@hapi/inert": "^6.0.3",
     "@hapi/joi": "^17.1.1",
     "@hapi/vision": "^6.0.1",
+    "cloudinary": "^1.25.0",
     "dotenv": "^8.2.0",
     "handlebars": "^4.7.6",
     "mais-mongoose-seeder": "^1.0.7",
@@ -29,5 +29,14 @@
   },
   "prettier": {
     "printWidth": 120
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philipmcnamara/WebDevSem3Assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/philipmcnamara/WebDevSem3Assignment/issues"
+  },
+  "homepage": "https://github.com/philipmcnamara/WebDevSem3Assignment#readme",
+  "description": ""
 }
