@@ -14,6 +14,7 @@ module.exports = [
   { method: "POST", path: "/login", config: Accounts.login },
   { method: 'GET', path: '/settings', config: Accounts.showSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
+
   { method: 'GET', path: '/ContactUs', config: Accounts.showContact },
   { method: 'POST', path: '/ContactUs', config: Accounts.ContactUs },
   { method: 'GET', path: '/Ailwee', config: Accounts.showAilwee },
@@ -36,7 +37,7 @@ module.exports = [
   { method: 'POST', path:"/displayPOI", config: Pois.POI },
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
-  { method: "POST", path: "/authenticate", config: Accounts.authenticate },
+
 
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
 

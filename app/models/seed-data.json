@@ -1,15 +1,11 @@
 {
   "categorys": {
     "_model": "Category",
-    "lisa": {
-      "category": "Monument",
-      "lastName": "Simpson",
-      "office": "President"
+    "Monument": {
+      "category": "Monument"
     },
-    "donald": {
-      "category": "Natural Wonder",
-      "lastName": "Trump",
-      "office": "President"
+    "Natural": {
+      "category": "Natural Wonder"
     }
   }
 }
