@@ -27,10 +27,10 @@ const Accounts = {
     auth: false,
     validate: {
       payload: {
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
+        firstName: Joi.string().required().regex(/^[A-Z][a-z]{2,}$/), // begin with upper case letter and then 2+ lower case letters
+        lastName: Joi.string().required().regex(/^[A-Z][a-z]{2,}$/), // begin with upper case letter and then 2+ lower case letters
         email: Joi.string().email().required(),
-        password: Joi.string().required(),
+        password: Joi.string().required().min(8), // min 8 characters
       },
       options: {
         abortEarly: false,
@@ -155,6 +155,9 @@ const Accounts = {
         const userEdit = request.payload;
         const id = request.auth.credentials.id;
         const user = await User.findById(id);
+
+        const hash = await bcrypt.hash(payload.password, saltRounds);
+
         user.firstName = userEdit.firstName;
         user.lastName = userEdit.lastName;
         user.email = userEdit.email;
