@@ -160,7 +160,6 @@ const Pois = {
         const category = collection.category;
         const description = collection.description;
         console.log("test POI update "+id);
-        // console.log("test 2");
         const record = await POI.findById(id);
         console.log("Name: "+collection.name);
         record.name = name;
