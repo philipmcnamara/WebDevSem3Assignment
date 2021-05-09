@@ -51,6 +51,35 @@ class POIService {
       return null;
     }
   }
+
+
+
+  async getPOI(id) {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/POIs/" + id + "/POIs");
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllPOIs() {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/POIs");
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async addPOI(newPOI) {
+    try {
+      const response = await axios.post(this.baseUrl + "/api/POIs", newPOI);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
 }
 
 module.exports = POIService;

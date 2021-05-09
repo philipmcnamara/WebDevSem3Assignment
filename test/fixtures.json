@@ -1,5 +1,6 @@
 {
   "POIService": "http://localhost:3000",
+
   "users": [
     {
       "firstName": "Homer",
@@ -25,5 +26,23 @@
     "lastName": "Simpson",
     "email": "maggie@simpson.com",
     "password": "secret"
+  },
+
+  "pois": [
+    {
+      "name": "The Spire",
+      "category": "Monument",
+      "description": "Big Spike in Dublin"
+    },
+    {
+      "name": "Giants Causway",
+      "category": "Natural Wonder",
+      "description": "Natural Rock Formation"
+    }
+  ],
+  "newPOI": {
+    "name": "The Spire",
+    "category": "Monument",
+    "description": "Big Spike in Dublin"
   }
 }
