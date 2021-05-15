@@ -28,6 +28,8 @@ module.exports = [
   { method: "GET", path: "/adminLogin", config: Accounts.showAdminLogin },
   { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
+  { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
+  { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
   { method: "GET", path: "/map", config: Accounts.showMap },
   { method: "POST", path: "/map", config: Accounts.map },
   { method: "GET", path: "/home", config: Accounts.home },
@@ -40,10 +42,10 @@ module.exports = [
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
 
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
-  { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
-  { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
 
-  { method: "POST", path: "/review", config: Reviews.reviews },
+  { method: "POST", path: "/addReview", config: Reviews.review },
+  { method: 'POST', path:"/displayReviewPOI", config: Reviews.REVIEW },
+
 
   {
     method: "GET",

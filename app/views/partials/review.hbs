@@ -1,27 +1,22 @@
-<form class="uk-form-stacked uk-text-left" action="/review" method="POST">
+<form action="/addReview" method="POST">
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <input class="uk-input uk-form-large" type="number" name="rating" value="{{rating}}">
+            <label class="uk-form-label" for="form-stacked-text">Enter Rating (out of 10) </label>
+            <input class="uk-input uk-form-large" type="text" name="rating" value="{{rating}}">
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <input class="uk-input uk-form-large" type="text" name="review" value="{{review}}">
+            <label class="uk-form-label" for="form-stacked-text">Add Review</label>
+            <input class="uk-input uk-textarea" type="text" name="review" value="{{review}}">
         </div>
+        <input type="hidden" value="{{id}}" name="id"/>
     </div>
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: empty"></span>
-            <input class="uk-input uk-form-large" type="hidden" name="reviewer" value="{{user.firstName}}">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-            <span class="uk-form-icon" uk-icon="icon: update"></span>
-            <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add Review</button><br></div></div>
+            <input type="hidden" value={{_id}} name="POIid" />
+            <span class="uk-form-icon" uk-icon="icon: update"></span><button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add Review</button> <br></div></div>
 </form>
 {{> error }}
-
-

@@ -29,7 +29,7 @@ const Pois = {
           name: data.name,
           category: data.category,
           description: data.description,
-          author: user._id
+          author: user._id,
         });
         await newPoi.save();
         return h.redirect("/report");
@@ -130,6 +130,8 @@ const Pois = {
       }
     },
   },
+
+
 
   deletePOI: {
     validate: {
