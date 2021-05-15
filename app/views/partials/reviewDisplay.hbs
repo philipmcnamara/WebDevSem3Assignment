@@ -1,0 +1,22 @@
+<form uk-textarea>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>Rating: {{rating}}</p>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>Review : {{review}}</p>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <p>Reviewer : {{user.firstName}} {{user.lastName}}</p>
+        </div>
+        <input type="hidden" value="{{id}}" name="id"/>
+    </div>
+</form>
+{{> error }}
+
+
+

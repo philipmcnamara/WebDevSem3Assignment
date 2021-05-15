@@ -2,6 +2,7 @@
 
 const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/POIs.js");
+const Reviews = require("./app/controllers/reviews.js");
 const weather = require("./app/controllers/weather.js");
 
 
@@ -38,11 +39,11 @@ module.exports = [
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
 
-
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
-
   { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
   { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
+
+  { method: "POST", path: "/review", config: Reviews.reviews },
 
   {
     method: "GET",
