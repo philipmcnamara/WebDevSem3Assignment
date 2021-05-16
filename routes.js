@@ -43,9 +43,8 @@ module.exports = [
 
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
 
-  { method: "POST", path: "/addReview", config: Reviews.review },
   { method: 'POST', path:"/displayReviewPOI", config: Reviews.REVIEW },
-
+  { method: "POST", path: "/addReview/{id}", config: Reviews.review },
 
   {
     method: "GET",

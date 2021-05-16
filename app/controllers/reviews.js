@@ -24,7 +24,7 @@ const Reviews = {
   review: {
     handler: async function(request, h) {
       try {
-        const POI_ID = request.id; //Look for the POI ID but Can't fetch it.
+        const POI_ID = request.params.id
         console.log("PId is : " + POI_ID);
         const id = request.auth.credentials.id;
         const POIid = await POI.findById(POI_ID); // will send POI id in here to link the review to the POI

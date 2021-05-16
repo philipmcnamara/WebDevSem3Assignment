@@ -110,8 +110,6 @@ const Pois = {
     },
     handler: async function (request, h) {
       try {
-        //const id = request.params._id
-        //const userEdit = request.payload;
         const collection = request.payload;
         const id = collection.id
         const name = collection.name;
