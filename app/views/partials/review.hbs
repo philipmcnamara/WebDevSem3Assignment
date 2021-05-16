@@ -1,9 +1,10 @@
-<form action="/addReview/{{id}}" method="POST">
+<form onsubmit="return Validation()" action="/addReview/{{id}}" method="POST">
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <span class="uk-form-icon" uk-icon="icon: empty"></span>
             <label class="uk-form-label" for="form-stacked-text">Enter Rating (out of 10) </label>
-            <input class="uk-input uk-form-large" type="text" name="rating" value="{{rating}}">
+            <input id="numb" class="uk-input uk-form-large" type="text" name="rating" value="{{rating}}">
+            <p id="demo"></p>
         </div>
     </div>
     <div class="uk-margin">
@@ -17,6 +18,26 @@
     <div class="uk-margin">
         <div class="uk-inline uk-width-1-1">
             <input type="hidden" value={{_id}} name="POIid" />
-            <span class="uk-form-icon" uk-icon="icon: update"></span><button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add Review</button> <br></div></div>
+            <span class="uk-form-icon" uk-icon="icon: update"></span>
+            <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add Review</button>
+            <script>
+                function Validation() {
+                    let x, text;
+
+                    // Get the value of the input field with id="numb"
+                    x = document.getElementById("numb").value;
+                    // If x is Not a Number or less than one or greater than 10
+                    if (isNaN(x) || x < 1 || x > 10) {
+                        text = "Input not valid, Pick a Number Between 1 & 10";
+                        document.getElementById("demo").innerHTML = text;
+                        return false;
+                    }
+                    text = "Validation Success";
+                    document.getElementById("demo").innerHTML = text;
+                    alert ("Thanks for your review");
+                    return true;
+                }
+            </script>
+            <br></div></div>
 </form>
 {{> error }}
