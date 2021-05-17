@@ -1,22 +1,4 @@
-<form uk-textarea>
-    <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-            <p>Rating: {{rating}}</p>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-            <p>Review : {{review}}</p>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-inline uk-width-1-1">
-            <p>Reviewer : {{reviewer.firstName}} {{reviewer.lastName}}</p>
-        </div>
-        <input type="hidden" value="{{id}}" name="id"/>
-    </div>
+<form action="/displayReview" method="POST">
+    <input type="hidden" value={{POIid}} name="id" />
+    <td><button type="submit"  class="uk-button uk-button-secondary uk-button-large uk-width-1-1">Click Here To View All Reviews</button></td>
 </form>
-{{> error }}
-
-
-

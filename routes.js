@@ -37,14 +37,16 @@ module.exports = [
   { method: "GET", path: "/report", config: Pois.report },
   { method: "GET", path: "/addPoi", config: Accounts.showPOI },
   { method: 'POST', path: '/addPoi', config: Accounts.POI },
-  { method: 'POST', path:"/displayPOI", config: Pois.POI },
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
-
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
 
-  { method: 'POST', path:"/displayReviewPOI", config: Reviews.REVIEW },
+  { method: 'POST', path:"/displayPOI", config: Pois.POI },
+  { method: 'POST', path:"/displayReview", config: Reviews.report },
   { method: "POST", path: "/addReview/{id}", config: Reviews.review },
+
+  //{ method: "GET", path: "/report", config: Reviews.report },
+
 
   {
     method: "GET",

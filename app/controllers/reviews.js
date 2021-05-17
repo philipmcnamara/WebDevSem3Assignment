@@ -7,18 +7,34 @@ const Joi = require("@hapi/joi");
 
 const Reviews = {
   home: {
-    handler: function (request, h) {
-      return h.view("home", { title: "Add Review" });
+    handler:async function (request, h) {
+      return h.view("home", { title: "Add Review", pois: pois  });
     },
   },
+  /*
   report: {
     handler: async function (request, h) {
       const reviews = await REVIEW.find().populate("review").lean();
+      let average = 0;
+      reviews.forEach((reviews) => {
+        average += reviews.amount/reviews.length;
+      });
       return h.view("report", {
         title: "Reviews SO Far",
         reviews: reviews,
+        average: average
       });
     },
+  },
+*/
+  report: {
+    handler: async function(request, h) {
+      const reviews = await REVIEW.find().populate("reviews").lean();
+      return h.view("displayPOI", {
+        title: "Reviews",
+        reviews: reviews
+      });
+    }
   },
 
   review: {
@@ -85,7 +101,13 @@ const Reviews = {
         const reviewer = record.reviewer;
         const POIid = record.POIid;
         console.log("test Review "+id);
-        return h.view("displayPOI", { title: "Testing", id: id, rating: rating, review: review, reviewer: reviewer, POIid: POIid });
+        return h.view("displayPOI",
+          { title: "Testing",
+            id: id,
+            rating: rating,
+            review: review,
+            reviewer: reviewer,
+            POIid: POIid });
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }

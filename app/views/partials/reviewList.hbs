@@ -1,26 +1,29 @@
 <div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
     <table class="uk-table">
-        <caption>
-            POI Reviews
-        </caption>
         <thead>
-        <th>Rating </th>
+        <th>Rating</th>
         <th>Review</th>
-        <th>Reviewer</th>
+        <th>POIid</th>
         </thead>
 
         <tbody class="uk-text-left">
-        {{#each pois}}
+        {{#each reviews}}
             <tr>
-                <form action="/displayReviewPOI" method="POST">
-                    <td>{{rating}}</td>
-                    <td>{{review}}</td>
-                    <td>{{reviewer.firstName}}, {{reviewer.lastName}}</td>
-                    <input type="hidden" value={{_id}} name="id" />
-                    <td><button type="submit"  class="uk-button uk-button-primary uk-button-large uk-width-1-1">Add Review</button></td>
-                </form>
+                <td>{{rating}}</td>
+                <td>{{review}}</td>
+                <td>{{POIid}}</td>
             </tr>
         {{/each}}
+        </tbody>
+    </table>
+    <table class="uk-table">
+        <thead>
+        <th>Average Review</th>
+        </thead>
+        <tbody class="uk-text-left">
+        <tr>
+            <td> {{average}} </td>
+        </tr>
         </tbody>
     </table>
 </div>
