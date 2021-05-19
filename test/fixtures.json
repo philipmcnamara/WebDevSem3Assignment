@@ -1,0 +1,48 @@
+{
+  "POIService": "http://localhost:3000",
+
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  ],
+  "newUser": {
+    "firstName": "Maggie",
+    "lastName": "Simpson",
+    "email": "maggie@simpson.com",
+    "password": "secret"
+  },
+
+  "pois": [
+    {
+      "name": "The Spire",
+      "category": "Monument",
+      "description": "Big Spike in Dublin"
+    },
+    {
+      "name": "Giants Causway",
+      "category": "Natural Wonder",
+      "description": "Natural Rock Formation"
+    }
+  ],
+  "newPOI": {
+    "name": "The Spire",
+    "category": "Monument",
+    "description": "Big Spike in Dublin"
+  }
+}

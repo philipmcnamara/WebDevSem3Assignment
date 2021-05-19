@@ -1,0 +1,30 @@
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+    <table class="uk-table">
+        <thead>
+        <th>Rating</th>
+        <th>Review</th>
+        <th>POIid</th>
+        </thead>
+
+        <tbody class="uk-text-left">
+        {{#each reviews}}
+            <tr>
+                <td>{{rating}}</td>
+                <td>{{review}}</td>
+                <td>{{POIid}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    <table class="uk-table">
+        <thead>
+        <th>Average Review Score</th>
+        </thead>
+        <tbody class="uk-text-left">
+        <tr>
+            <td> {{average}} </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

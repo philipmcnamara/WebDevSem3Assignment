@@ -8,7 +8,6 @@ const Cookie = require("@hapi/cookie");
 const Joi = require("@hapi/joi");
 require("./app/models/db");
 const env = require("dotenv");
-
 const dotenv = require("dotenv");
 
 const result = dotenv.config();

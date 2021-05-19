@@ -2,6 +2,7 @@
 
 const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/POIs.js");
+const Reviews = require("./app/controllers/reviews.js");
 const weather = require("./app/controllers/weather.js");
 
 
@@ -27,6 +28,8 @@ module.exports = [
   { method: "GET", path: "/adminLogin", config: Accounts.showAdminLogin },
   { method: "POST", path: "/adminSignup", config: Accounts.adminSignup },
   { method: "POST", path: "/adminLogin", config: Accounts.adminLogin },
+  { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
+  { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
   { method: "GET", path: "/map", config: Accounts.showMap },
   { method: "POST", path: "/map", config: Accounts.map },
   { method: "GET", path: "/home", config: Accounts.home },
@@ -34,15 +37,16 @@ module.exports = [
   { method: "GET", path: "/report", config: Pois.report },
   { method: "GET", path: "/addPoi", config: Accounts.showPOI },
   { method: 'POST', path: '/addPoi', config: Accounts.POI },
-  { method: 'POST', path:"/displayPOI", config: Pois.POI },
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
   { method: "POST", path: "/displayDeletedPOI", config: Pois.deletePOI},
-
-
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
 
-  { method: "GET", path: "/adminSettings", config: Accounts.adminSettings },
-  { method: "POST", path: "/adminSettings", config: Accounts.deleteUser},
+  { method: 'POST', path:"/displayPOI", config: Pois.POI },
+  { method: 'POST', path:"/displayReview/{id}", config: Reviews.report },
+  { method: "POST", path: "/addReview/{id}", config: Reviews.review },
+
+  //{ method: "GET", path: "/report", config: Reviews.report },
+
 
   {
     method: "GET",

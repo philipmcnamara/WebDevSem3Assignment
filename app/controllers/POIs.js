@@ -29,7 +29,7 @@ const Pois = {
           name: data.name,
           category: data.category,
           description: data.description,
-          author: user._id
+          author: user._id,
         });
         await newPoi.save();
         return h.redirect("/report");
@@ -76,7 +76,7 @@ const Pois = {
       try {
         const collection = request.payload;
         const id = collection.id
-        console.log("test POI "+id);
+        console.log("POI Id : "+id);
         const poi = await POI.findById(id);
         const name = poi.name;
         const category = poi.category;
@@ -110,8 +110,6 @@ const Pois = {
     },
     handler: async function (request, h) {
       try {
-        //const id = request.params._id
-        //const userEdit = request.payload;
         const collection = request.payload;
         const id = collection.id
         const name = collection.name;
@@ -130,6 +128,8 @@ const Pois = {
       }
     },
   },
+
+
 
   deletePOI: {
     validate: {
@@ -160,7 +160,6 @@ const Pois = {
         const category = collection.category;
         const description = collection.description;
         console.log("test POI update "+id);
-        // console.log("test 2");
         const record = await POI.findById(id);
         console.log("Name: "+collection.name);
         record.name = name;
