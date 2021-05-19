@@ -42,7 +42,7 @@ module.exports = [
   { method: "POST", path: "/weatherNav", config: Pois.weatherNav},
 
   { method: 'POST', path:"/displayPOI", config: Pois.POI },
-  { method: 'POST', path:"/displayReview", config: Reviews.report },
+  { method: 'POST', path:"/displayReview/{id}", config: Reviews.report },
   { method: "POST", path: "/addReview/{id}", config: Reviews.review },
 
   //{ method: "GET", path: "/report", config: Reviews.report },

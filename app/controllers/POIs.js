@@ -76,7 +76,7 @@ const Pois = {
       try {
         const collection = request.payload;
         const id = collection.id
-        console.log("test POI "+id);
+        console.log("POI Id : "+id);
         const poi = await POI.findById(id);
         const name = poi.name;
         const category = poi.category;

@@ -11,30 +11,38 @@ const Reviews = {
       return h.view("home", { title: "Add Review", pois: pois  });
     },
   },
-  /*
+
   report: {
     handler: async function (request, h) {
-      const reviews = await REVIEW.find().populate("review").lean();
+      const POI_ID = request.params.id;
+      console.log("POI id in Review is : " + POI_ID);
+
+      const allReviews = await REVIEW.find().populate("reviews").lean();
+
+      let poiReviews = [];
+      let index = 0;
       let average = 0;
-      reviews.forEach((reviews) => {
-        average += reviews.amount/reviews.length;
+      let length = 0;
+      allReviews.forEach((review) => {
+        console.log("reviews.POIid "+review.POIid);
+        console.log("POI_ID "+POI_ID);
+        if (review.POIid === POI_ID) {
+          console.log("eq reviews.POIid "+review.POIid);
+          console.log("eq POI_ID "+POI_ID);
+          length++;
+          average = (average + review.rating) / length;
+          poiReviews[index] = review;
+          index++;
+        }
+        return poiReviews;
+
       });
-      return h.view("report", {
-        title: "Reviews SO Far",
-        reviews: reviews,
+      return h.view("displayPOI", {
+        title: "Reviews So Far",
+        reviews: poiReviews,
         average: average
       });
     },
-  },
-*/
-  report: {
-    handler: async function(request, h) {
-      const reviews = await REVIEW.find().populate("reviews").lean();
-      return h.view("displayPOI", {
-        title: "Reviews",
-        reviews: reviews
-      });
-    }
   },
 
   review: {

@@ -16,7 +16,7 @@ const Reviews = {
   findByUser: {
     auth: false,
     handler: async function (request, h) {
-      const reviews = await REview.find({ user: request.params.id });
+      const reviews = await Review.find({ user: request.params.id });
       return reviews;
     },
   },
