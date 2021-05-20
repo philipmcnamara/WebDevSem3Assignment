@@ -47,8 +47,9 @@ module.exports = [
   { method: 'POST', path:"/displayReview/{id}", config: Reviews.report },
   { method: "POST", path: "/addReview/{id}", config: Reviews.review },
 
-  { method: "GET", path: "/notices", config: Notices.home },
+  //{ method: "GET", path: "/notices", config: Notices.home },
   { method: 'POST', path:"/addNotice", config: Notices.addNotice},
+  { method: "GET", path: "/notices", config: Notices.report },
 
 
   {

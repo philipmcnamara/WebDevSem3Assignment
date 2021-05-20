@@ -11,6 +11,22 @@ const Notices = {
     },
   },
 
+
+  report: {
+    handler: async function (request, h) {
+      const allNotices = await NOTICE.find().populate("notices").lean();
+      let total = 0;
+      allNotices.forEach((notice) => {
+        total += notice.amount;
+      });
+      return h.view("notices", {
+        title: "Donations to Date",
+        notices: allNotices,
+        total: total,
+      });
+    },
+  },
+
   addNotice: {
     handler: async function(request, h) {
       try {
