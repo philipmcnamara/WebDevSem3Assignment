@@ -1,0 +1,23 @@
+<form  action="/addNotice" method="POST">
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
+            <label class="uk-form-label" for="form-stacked-text">Notice </label>
+            <input id="numb" class="uk-input uk-form-large" type="text" name="notice" >
+            <p id="demo"></p>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <span class="uk-form-icon" uk-icon="icon: empty"></span>
+            <label class="uk-form-label" for="form-stacked-text">Date</label>
+            <input class="uk-input uk-textarea" type="date" name="date" >
+        </div>
+        <input type="hidden" value="{{id}}" name="id"/>
+    </div>
+    <div class="uk-margin">
+        <div class="uk-inline uk-width-1-1">
+            <button class="submit uk-button uk-button-primary uk-button-large uk-width-1-1">Add Notice</button>
+            <br></div></div>
+</form>
+{{> error }}

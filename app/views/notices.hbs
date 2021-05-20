@@ -1,0 +1,25 @@
+<div class="uk-flex uk-flex-center uk-flex-middle uk-grid-small" uk-grid>
+    {{> title-card title="Find us...On the Wild Athlantic Way" subTitle="Irelands Favourate Visitor Attraction"}}
+
+</div>
+<nav class="uk-navbar-container" uk-navbar="dropbar: true; dropbar-mode: push">...</nav>
+<div class="uk-navbar-dropbar">
+    {{> navigation }}
+</div>
+
+<div class="uk-container uk-margin">
+    <div class="uk-width-expand@m">
+        <div class="uk-card uk-card-default uk-width-xxxlarge uk-card-body uk-box-shadow-large">
+            <h3 class="uk-card-title uk-text-center">Notice Board: </h3>
+            {{>notice-List}}
+        </div>
+    </div>
+    <div class="uk-width-expand@m">
+        <div class="uk-card uk-card-default uk-width-xxxlarge uk-card-body uk-box-shadow-large">
+            <h3 class="uk-card-title uk-text-center">Add a New Notice: </h3>
+            {{>addNotices}}
+        </div>
+    </div>
+</div>
+</div>
+

@@ -4,6 +4,7 @@ const Accounts = require("./app/controllers/accounts");
 const Pois = require("./app/controllers/POIs.js");
 const Reviews = require("./app/controllers/reviews.js");
 const weather = require("./app/controllers/weather.js");
+const Notices = require("./app/controllers/notices.js");
 
 
 module.exports = [
@@ -35,6 +36,7 @@ module.exports = [
   { method: "GET", path: "/home", config: Accounts.home },
   { method: "POST", path: "/POI", config: Pois.poi },
   { method: "GET", path: "/report", config: Pois.report },
+
   { method: "GET", path: "/addPoi", config: Accounts.showPOI },
   { method: 'POST', path: '/addPoi', config: Accounts.POI },
   { method: 'POST', path:"/displayUpdatedPOI", config: Pois.UpdatePOI },
@@ -45,7 +47,8 @@ module.exports = [
   { method: 'POST', path:"/displayReview/{id}", config: Reviews.report },
   { method: "POST", path: "/addReview/{id}", config: Reviews.review },
 
-  //{ method: "GET", path: "/report", config: Reviews.report },
+  { method: "GET", path: "/notices", config: Notices.home },
+  { method: 'POST', path:"/addNotice", config: Notices.addNotice},
 
 
   {
