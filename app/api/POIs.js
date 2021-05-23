@@ -11,15 +11,6 @@ const Pois = {
       return pois;
     },
   },
-/*
-  addPOI: {
-    auth: false,
-    handler: async function (request, h) {
-      let poi = new POI(request.payload);
-      poi = await poi.save();
-      return poi;
-    },
-  },*/
 
   addPOI: {
     auth: false,
@@ -44,8 +35,8 @@ const Pois = {
   deleteOne: {
     auth: false,
     handler: async function (request, h) {
-      const response = await POI.deleteOne({ _id: request.params.id });
-      if (response.deletedCount == 1) {
+      const POI = await POI.deleteOne({ _id: request.params.id });
+      if (POI) {
         return { success: true };
       }
       return Boom.notFound("id not found");

@@ -10,6 +10,7 @@ require("./app/models/db");
 const env = require("dotenv");
 const dotenv = require("dotenv");
 
+
 const result = dotenv.config();
 if (result.error) {
   console.log(result.error.message);
@@ -17,7 +18,7 @@ if (result.error) {
 }
 
 const server = Hapi.server({
-  port: process.env.PORT || 3100,
+  port: process.env.PORT || 3000,
 });
 
 async function init() {
@@ -25,6 +26,9 @@ async function init() {
   await server.register(Vision);
   await server.register(Cookie);
   server.validator(require("@hapi/joi"));
+  server.route(require("./routes-api"));
+
+
   server.views({
     engines: {
       hbs: require("handlebars"),

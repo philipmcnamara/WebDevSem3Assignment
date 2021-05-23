@@ -52,6 +52,49 @@ class POIService {
     }
   }
 
+  async deleteAllReviews() {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/reviews");
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createReview(newReview) {
+    try {
+      const response = await axios.post(this.baseUrl + "/api/reviews", newReview);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async getReview(id) {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/reviews/" + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async getReviews() {
+    try {
+      const response = await axios.get(this.baseUrl + "/api/reviews");
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteOneReview(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + "/api/users/" + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
 
 
   async getPOI(id) {
@@ -79,6 +122,8 @@ class POIService {
       return null;
     }
   }
+
+
 
 }
 

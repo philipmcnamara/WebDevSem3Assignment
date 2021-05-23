@@ -28,6 +28,21 @@
     "password": "secret"
   },
 
+  "reviews": [
+    {
+      "rating": 5,
+      "review": "Not Bad"
+    },
+    {
+      "rating": 7,
+      "review": "Pretty good"
+    }
+  ],
+  "newReview": {
+    "rating": 3,
+    "review": "Not Great"
+  },
+
   "pois": [
     {
       "name": "The Spire",

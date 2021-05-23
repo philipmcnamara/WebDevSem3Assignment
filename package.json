@@ -20,9 +20,12 @@
     "cloudinary": "^1.25.0",
     "dotenv": "^8.2.0",
     "handlebars": "^4.7.6",
+    "hapi": "^18.1.0",
     "lodash": "^4.17.21",
     "mais-mongoose-seeder": "^1.0.7",
-    "mongoose": "^5.11.15"
+    "mongoose": "^5.11.15",
+    "n_": "^3.0.0",
+    "tests": "^0.4.2"
   },
   "devDependencies": {
     "axios": "^0.21.1",
