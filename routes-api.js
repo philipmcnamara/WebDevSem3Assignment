@@ -10,12 +10,16 @@ module.exports = [
   { method: "DELETE", path: "/api/users/{id}", config: Users.deleteOne },
   { method: "DELETE", path: "/api/users", config: Users.deleteAll },
 
-  { method: "GET", path: "/api/POIs", config: POIs.findAll },
+  { method: "GET", path: "/api/POIs", config: POIs.find },
+  { method: "GET", path: "/api/POIs/{id}", config: POIs.findOne },
+  { method: "POST", path: "/api/POIs", config: POIs.create },
+  { method: "DELETE", path: "/api/POIs/{id}", config: POIs.deleteOne },
   { method: "DELETE", path: "/api/POIs", config: POIs.deleteAll },
 
   { method: "GET", path: "/api/reviews", config: Reviews.find },
   { method: "GET", path: "/api/reviews/{id}", config: Reviews.findOne },
-  { method: "POST", path: "/api/reviews", config: Reviews.createReview },
+  { method: "POST", path: "/api/reviews", config: Reviews.create },
   { method: "DELETE", path: "/api/reviews/{id}", config: Reviews.deleteOne },
-  { method: "DELETE", path: "/api/reviews", config: Reviews.deleteAllReviews },
+  { method: "DELETE", path: "/api/reviews", config: Reviews.deleteAll },
+
 ];

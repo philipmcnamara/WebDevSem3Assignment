@@ -3,8 +3,8 @@
 const POI = require("../models/POI");
 const Boom = require("@hapi/boom");
 
-const Pois = {
-  findAll: {
+const POIs = {
+  find: {
     auth: false,
     handler: async function (request, h) {
       const pois = await POI.find();
@@ -12,7 +12,22 @@ const Pois = {
     },
   },
 
-  addPOI: {
+  findOne: {
+    auth: false,
+    handler: async function (request, h) {
+      try {
+        const pois = await POI.findOne({ _id: request.params.id });
+        if (!pois) {
+          return Boom.notFound("No POI with this id");
+        }
+        return pois;
+      } catch (err) {
+        return Boom.notFound("No POI with this id");
+      }
+    },
+  },
+
+  create: {
     auth: false,
     handler: async function (request, h) {
       const newPOI = new POI(request.payload);
@@ -20,7 +35,7 @@ const Pois = {
       if (poi) {
         return h.response(poi).code(201);
       }
-      return Boom.badImplementation("error creating POI");
+      return Boom.badImplementation("error creating user");
     },
   },
 
@@ -35,14 +50,13 @@ const Pois = {
   deleteOne: {
     auth: false,
     handler: async function (request, h) {
-      const POI = await POI.deleteOne({ _id: request.params.id });
-      if (POI) {
+      const poi = await POI.deleteOne({ _id: request.params.id });
+      if (poi) {
         return { success: true };
       }
       return Boom.notFound("id not found");
     },
   },
-
 };
 
-module.exports = Pois;
+module.exports = POIs;
