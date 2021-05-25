@@ -21,11 +21,10 @@ suite("Review API tests", function () {
 
   test("create a review", async function () {
     const returnedReview = await poiService.createReview(newReview);
-    assert(_.some([returnedReview], newReview), "returnedReview must be a superset of newReview");
     assert.isDefined(returnedReview._id);
   });
 
-  test("get review", async function () {
+  test("get a review", async function () {
     const u1 = await poiService.createReview(newReview);
     const u2 = await poiService.getReview(u1._id);
     assert.deepEqual(u1, u2);
